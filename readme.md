@@ -52,3 +52,27 @@ python nome_do_arquivo.py
 Substitua nome_do_arquivo.py pelo nome do arquivo em que você salvou o script.
 Por exemplo de acordo com esse código seria python info_pet.py
 
+## Testes Unitários
+
+# Descrição
+
+Este projeto inclui um conjunto de testes unitários, escritos utilizando a biblioteca unittest, que verificam o comportamento da função coletar_informacoes_pet. Estes testes garantem que a função lida corretamente com diferentes tipos de entradas do usuário e que as validações de idade e peso são aplicadas conforme esperado.
+
+# Como Executar os Testes
+
+# Para rodar os testes, utilize o seguinte comando no terminal:
+
+
+``` 
+python -m unittest nome_do_arquivo_teste.py 
+
+```
+Substitua nome_do_arquivo_teste.py pelo nome do arquivo onde os testes estão implementados. Por exemplo, se o arquivo se chamar teste.py, o comando seria:
+
+```
+python -m unittest teste.py
+
+```
+
+Isso executará todos os testes definidos na classe TestInfoPet e exibirá um relatório dos resultados no terminal.
+
