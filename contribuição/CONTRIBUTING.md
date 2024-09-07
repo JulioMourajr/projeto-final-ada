@@ -46,10 +46,6 @@ Utilizamos a convenção de commits do [Conventional Commits](https://www.conven
 - Adicione testes para suas alterações.
 - Certifique-se de que todos os testes estão passando antes de enviar um PR.
 
-## Código de Conduta
-
-Por favor, leia o nosso [Código de Conduta](CODE_OF_CONDUCT.md) para entender as expectativas em relação ao comportamento dos colaboradores.
-
 ## Agradecimentos
 
 Agradecemos a todos os contribuidores! Seu apoio é muito importante para nós.
