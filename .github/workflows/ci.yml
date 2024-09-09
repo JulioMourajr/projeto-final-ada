@@ -27,7 +27,9 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest testes.py
+        pip install pytest
+        pytest
+        python -m unittest teste.py
 
     - name: Lint code
       run: |
