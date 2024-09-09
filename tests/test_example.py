@@ -5,24 +5,29 @@ from info_pet import coletar_informacoes_pet
 
 class TestColetarInformacoesPet(unittest.TestCase):
 
+    # Teste para entradas válidas
     @patch('builtins.input', side_effect=['Bicho', '5', '10.5'])
     @patch('sys.stdout', new_callable=StringIO)
     def test_coletar_informacoes_pet_validas(self, mock_stdout, mock_input):
-        coletar_informacoes_pet()
-        output = mock_stdout.getvalue()
-        self.assertIn("Nome: Bicho", output)
-        self.assertIn("Idade: 5 anos", output)
-        self.assertIn("Peso: 10.5 kg", output)
+        coletar_informacoes_pet()  # Chama a função que está sendo testada
+        output = mock_stdout.getvalue()  # Captura o que foi impresso no console
+        # Verifica se os valores corretos foram impressos
+        self.assertIn("Nome do pet: Bicho", output)
+        self.assertIn("Idade do pet: 5 anos", output)
+        self.assertIn("Peso do pet: 10.5 kg", output)
 
+    # Teste para peso inválido
     @patch('builtins.input', side_effect=['Bicho', '5', 'dez', '10.5'])
     @patch('sys.stdout', new_callable=StringIO)
     def test_coletar_informacoes_pet_peso_invalido(self, mock_stdout, mock_input):
-        coletar_informacoes_pet()
-        output = mock_stdout.getvalue()
+        coletar_informacoes_pet()  # Chama a função que está sendo testada
+        output = mock_stdout.getvalue()  # Captura o que foi impresso no console
+        # Verifica se a mensagem de erro para peso inválido foi exibida
         self.assertIn("Por favor, insira um número válido para o peso.", output)
-        self.assertIn("Nome: Bicho", output)
-        self.assertIn("Idade: 5 anos", output)
-        self.assertIn("Peso: 10.5 kg", output)
+        # Verifica se os valores corretos foram aceitos após a correção
+        self.assertIn("Nome do pet: Bicho", output)
+        self.assertIn("Idade do pet: 5 anos", output)
+        self.assertIn("Peso do pet: 10.5 kg", output)
 
 if __name__ == '__main__':
     unittest.main()
