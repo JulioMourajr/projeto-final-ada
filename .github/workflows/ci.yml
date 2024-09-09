@@ -27,7 +27,7 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest discover tests
+        python -m unittest testes.py
 
     - name: Lint code
       run: |
