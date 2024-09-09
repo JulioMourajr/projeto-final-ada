@@ -62,17 +62,16 @@ Este projeto inclui um conjunto de testes unitários, escritos utilizando a bibl
 
 # Para rodar os testes, utilize o seguinte comando no terminal:
 
-
-``` 
-python -m unittest nome_do_arquivo_teste.py 
-
 ```
-Substitua nome_do_arquivo_teste.py pelo nome do arquivo onde os testes estão implementados. Por exemplo, se o arquivo se chamar teste.py, o comando seria:
-
-```
-python -m unittest teste.py
+pytest -s tests/
 
 ```
 
 Isso executará todos os testes definidos na classe TestInfoPet e exibirá um relatório dos resultados no terminal.
+
+## Contribuição
+
+Para Contribuir com esse projeto.
+
+[Contribution guidelines for this project](contribuição/CONTRIBUTING.md)
 
