@@ -30,3 +30,32 @@ jobs:
       run: |
         pip install pytest
         pytest -s tests/
+
+    - name: Set Up SSH Key
+      run: |
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/julioAda.pem
+        chmod 600 /tmp/julioAda.pem
+        
+    - name: SSH into EC2 and Deploy
+      
+      run: |
+        ssh -i /tmp/julioAda.pem -o StrictHostKeyChecking=no -o LogLevel=DEBUG ec2-user@${{ secrets.EC2_IP }} << EOF
+          # Remove the /home/ec2-user/app directory if it exists
+          if [ -d "/home/ec2-user/app" ]; then
+            echo "Removing existing /home/ec2-user/app directory..."
+            sudo rm -rf /home/ec2-user/app
+          fi
+
+          # Recreate the /home/ec2-user/app directory
+          mkdir -p /home/ec2-user/app
+          cd /home/ec2-user/app
+
+          # Install git if not already installed
+          sudo yum install -y git || sudo apt-get install -y git
+
+          # Clone o seu repositório
+          git clone https://github.com/JulioMourajr/projeto-final-ada.git .
+
+          # Mensagem de log para confirmar sucesso no deploy
+          echo "Deployment completed successfully!"
+        EOF
