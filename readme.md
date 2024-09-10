@@ -37,6 +37,53 @@ Peso: 12.3 kg
 
 ```
 
+## Como Criar uma Máquina na AWS e Conectar via SSH
+
+### Passo 1: Criar uma Instância EC2
+
+1. **Acesse o Console da AWS**: Vá para [AWS Management Console](https://aws.amazon.com/console/).
+2. **Navegue até o EC2 Dashboard**: No menu de serviços, selecione `EC2` para acessar o painel do EC2.
+3. **Lançar uma Instância**:
+   - Clique em `Launch Instance`.
+   - Escolha uma Amazon Machine Image (AMI), como `Amazon Linux 2 AMI`.
+   - Selecione o tipo de instância, como `t2.micro` (gratuito elegível).
+   - Configure as opções de instância conforme necessário.
+   - Adicione armazenamento, se necessário.
+   - Adicione tags, se necessário.
+   - Configure o grupo de segurança (Security Group):
+     - Adicione uma regra para permitir o tráfego SSH (porta 22).
+   - Revise e clique em `Launch`.
+
+### Passo 2: Criar um Par de Chaves SSH
+
+1. **Criar um Novo Par de Chaves**:
+   - Quando solicitado, selecione `Create a new key pair`.
+   - Dê um nome ao par de chaves e clique em `Download Key Pair`.
+   - Salve o arquivo `.pem` em um local seguro no seu computador.
+
+### Passo 3: Conectar à Instância via SSH
+
+1. **Alterar Permissões do Arquivo `.pem`**:
+   - No terminal, navegue até o diretório onde o arquivo `.pem` foi salvo.
+   - Execute o comando abaixo para alterar as permissões do arquivo:
+     ```bash
+     chmod 400 seu-arquivo.pem
+     ```
+
+2. **Conectar à Instância EC2**:
+   - No console do EC2, copie o endereço IP público da sua instância.
+   - No terminal, execute o comando abaixo para conectar à instância via SSH:
+     ```bash
+     ssh -i "seu-arquivo.pem" ec2-user@seu-endereco-ip
+     ```
+
+### Exemplo de Conexão SSH
+
+```bash
+chmod 400 julioAda.pem
+ssh -i "julioAda.pem" ec2-user@seu-endereco-ip
+```
+
 # Requisitos
 
 Python 3.x
